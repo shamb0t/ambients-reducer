@@ -15,10 +15,10 @@ const ipfs = new IPFS({
 ipfs.on('ready', async () => {
   const identity = await IdentityProvider.createIdentity({ id: 'A'})
   const log = new Log(ipfs, identity)
-  const appendEvent = async (s) => {
-    await log.append(s)
+  const appendEvent = async ([e, t]) => {
+    await log.append({ event: e, target: t })
   }
-  const result = await vm.reduceFullyDebug(0, appendEvent, program)
+  const result = vm.reduceFullyDebug(0, appendEvent.bind(this), program)
 
-  setTimeout(() =>console.log(log.heads[0].hash), 2000)
+  setTimeout(() => Object.values(log.heads).map(e => console.log(e.hash)), 2000)
 })
