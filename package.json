@@ -18,6 +18,9 @@
   },
   "dependencies": {
     "@glennsl/bs-json": "^5.0.1",
-    "bs-node": "github:reasonml-community/bs-node"
+    "bs-node": "github:reasonml-community/bs-node",
+    "ipfs": "^0.38.0",
+    "ipfs-log": "^4.4.0",
+    "orbit-db-identity-provider": "^0.2.0"
   }
 }
